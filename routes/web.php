@@ -12,10 +12,22 @@
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('welcome'); 
 // });
 
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('master');
+// });
+
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+Route::get('/',
+    ['uses' => 'HomeController@getIndex']
+);
+
+Route::get('/roles',
+    ['uses' => 'RolController@getIndex']
+);
