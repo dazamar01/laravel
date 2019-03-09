@@ -6,5 +6,5 @@ Usuarios
 
 @section('content')
 <h1>Usuarios</h1>
-@include('usuarios.user-list', array('user' => 'daniel'))
+@include('usuarios.user-list', array('user' => $name))
 @endsection
