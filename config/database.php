@@ -33,13 +33,29 @@ return [
 
     'connections' => [
 
+        'mysql' => array(
+            'read' => array(
+                'host' => '127.0.0.1',
+            ),
+            'write' => array(
+                'host' => '127.0.0.1'
+            ),
+            'driver'    => 'mysql',
+            'port'      => '8889',
+            'database'  => 'test_laravel',
+            'username'  => 'test',
+            'password'  => 'test',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_spanish_ci',
+        ),
+        /*
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '8889'),
             'database' => env('test_laravel', 'forge'),
-            'username' => env('test', 'forge'),
-            'password' => env('test', ''),
+            'username' => env('root', 'forge'),
+            'password' => env('d3v3l0p', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_spanish_ci',
@@ -51,6 +67,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        */
 
     ],
 
