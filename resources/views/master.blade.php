@@ -52,13 +52,46 @@
       </nav>
 
   <div class="container">
-    
+    @if(!empty(Session::get('info')))
+      <div class="alert alert-info alert-dismissible auto-hide">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{Session::get('info')}}
+      </div>
+    @endif
+    @if(!empty(Session::get('success')))
+      <div class="alert alert-success alert-dismissible auto-hide">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{Session::get('success')}}
+      </div>
+    @endif
+    @if(!empty(Session::get('warning')))
+      <div class="alert alert-warning alert-dismissible auto-hide">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{Session::get('warning')}}
+      </div>
+    @endif
+    @if(!empty(Session::get('danger')))
+      <div class="alert alert-danger alert-dismissible auto-hide">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{Session::get('danger')}}
+      </div>
+    @endif
     @yield('content')
     
   </div>
 
   <script src="{{url('js/popper.min.js')}}"></script>
   <script src="{{url('js/bootstrap.min.js')}}"></script>
+  <script src="{{url('js/generales.js')}}"></script>
+
+  <script>
+    $( document ).ready(function() {
+      $(".auto-hide").fadeTo(1800, 500).slideUp(500, function(){
+          $(".auto-hide").slideUp(500);
+      });
+
+    });
+  </script>
   
 </body>
 </html>
