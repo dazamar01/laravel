@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Demo Project</title>
+  @if (trim($__env->yieldContent('title')))
+    <title>@yield('title')</title>
+  @else
+  <title>Demo</title>
+  @endif
   <base href="{{ URL::asset('/') }}">
   <link rel="stylesheet" href="{{ url('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ url('css/ytproject-style.css')}}">
@@ -23,11 +27,12 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item {{ setActive('home', 'active') }}">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              {{-- <a class="nav-link" href="/usuarios">Usuarios</a> --}}
+              <a class="nav-link {{ setActive('usuarios', 'active') }}" href="/usuarios">Usuarios</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,15 +45,22 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ auth()->user()->username }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Perfil</a>
+                <a class="dropdown-item" href="#">Usuarios</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
+              </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
+        
       </nav>
 
   <div class="container">
@@ -76,6 +88,7 @@
         {{Session::get('danger')}}
       </div>
     @endif
+    <br/>
     @yield('content')
     
   </div>

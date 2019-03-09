@@ -38,12 +38,17 @@ Route::get('/roles',
 //     return view('auth.login');
 // });
 
+// Login
 Route::get('/', 'Auth\LoginController@showLoginForm'); //->middleware('guest');
 Route::get('login', function () {
     return redirect('/');
 });
-
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('home', 'HomeController@index')->name('home');
+
+// Usuarios
+Route::get('/usuarios',
+    ['uses' => 'UsuariosController@index']
+);
