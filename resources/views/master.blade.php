@@ -82,12 +82,14 @@
 
   <script src="{{url('js/popper.min.js')}}"></script>
   <script src="{{url('js/bootstrap.min.js')}}"></script>
+  <script src="{{url('js/generales.js')}}"></script>
 
   <script>
     $( document ).ready(function() {
       $(".auto-hide").fadeTo(1800, 500).slideUp(500, function(){
           $(".auto-hide").slideUp(500);
       });
+
     });
   </script>
   
