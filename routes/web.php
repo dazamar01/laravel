@@ -24,6 +24,7 @@
 //     return view('home');
 // });
 
+/*
 Route::get('/',
     ['uses' => 'HomeController@getIndex']
 );
@@ -31,3 +32,18 @@ Route::get('/',
 Route::get('/roles',
     ['uses' => 'RolController@getIndex']
 );
+*/
+
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+
+Route::get('/', 'Auth\LoginController@showLoginForm'); //->middleware('guest');
+Route::get('login', function () {
+    return redirect('/');
+});
+
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('home', 'HomeController@index')->name('home');
