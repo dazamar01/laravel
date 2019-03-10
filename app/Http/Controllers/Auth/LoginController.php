@@ -28,13 +28,6 @@ class LoginController extends Controller
             'password' => 'required|string'
         ]);
 
-        // return $credentials;
-
-        /*
-        $email = 'dazamar01@hotmail.com';
-        $password = Hash::make('test');
-        $user = User::create(['email' => $email, 'password' => $password ]);
-            */
         if (Auth::attempt($credentials)) {
             return redirect()->route('home');
         }

@@ -46,9 +46,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        \Log::info("Verifying error...");
+        \Log::error($exception);
         if ($exception instanceof \Illuminate\Auth\AuthenticationException)
         {
             return redirect('/')->with('flash','Por favor inicia sesión.');
+        }
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException)
+        {
+            \Log::info($exception);
         }
         return parent::render($request, $exception);
     }
