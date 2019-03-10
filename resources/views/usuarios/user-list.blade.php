@@ -1,3 +1,3 @@
 LISTA
 
-{{$user}}
+{{$rows}}

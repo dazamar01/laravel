@@ -4,7 +4,8 @@ namespace App\Services;
 use App\User as UserModel;
 use PHPUnit\Framework\Constraint\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-// use App\Services\Paginador as Paginador;
+// 
+use App\Services\DataTransfer as Transfer;
 
 /*
 \Log::info('This is some useful information.');
@@ -22,28 +23,46 @@ class UserService
     */
   public function getDataList($params, $paginador)
   {
+    /*
+		info('Readed paginador');
     info((array)$paginador);
     
+		info('Readed parameters');
+    info((array)$params);
+    */
+
     $method = "getData";
     $errorContext = " Context: -> [  ]";
 
+    // $data = new \stdClass();
     $data = null;
 
     try {
 
-      \Log::info($this->clasName . $method);
+      // \Log::info($this->clasName . $method);
       
-      $users = UserModel::where('activo', 1)
+      $totalRegistros = 0;
+
+      $rawData = UserModel::where('activo', 1)
         ->orderBy('username', 'asc')
-        ->paginate($paginador->rowsPorPagina);
-      //->get();
+        ->paginate($paginador->rowsPorPagina)->toArray();
+      
+      $totalRegistros = UserModel::where('activo','=','1')->count();
 
-      info("users");
-      info($users);
+        // info('$rawData');
+        // info($rawData);
 
-      if (!$users) {
+        // current_page
+        // data
+        // total
+
+      if (!$rawData) {
         throw new ModelNotFoundException("Data not found | " . $this->clasName . $method . "\n" . $errorContext);
       }
+
+      $data = new Transfer();
+      $data->setData($rawData['data'],$totalRegistros,$paginador->getCurrentPage());
+      
     } catch (ModelNotFoundException $ex) {
       \Log::warning($ex->getMessage());
       // throw $ex;
@@ -52,8 +71,6 @@ class UserService
       \Log::error("Exception | " . $this->clasName . $method . $errorContext);
       throw $ex;
     }
-
-
 
     return $data;
   }

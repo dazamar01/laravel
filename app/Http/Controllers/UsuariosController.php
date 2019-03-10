@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use PHPUnit\Framework\Constraint\Exception;
-
 use Illuminate\Http\Request;
 use App\Services\UserService;
-use \App\Http\Controllers\stdClass;
 use App\Services\Paginador as Paginador;
+use Illuminate\Support\Facades\Input;
 
 class UsuariosController extends Controller
 {
@@ -19,19 +17,27 @@ class UsuariosController extends Controller
 		$this->userService = $userService;
 	}
 
-	public function index()
+	public function index(Request $request)
 	{
 		$method = "getData";
 
 		$usuarios = null;
-
 		$paginator = new Paginador();
-		$paginator->setPage(2);
+		
+		$inputs = Input::all();
+		
+		$params = new \stdClass();
+		if ( isset($inputs['page']) ){
+			$paginator->setPage($inputs['page']);
+		}
+		if ( isset($inputs['name']) ){
+			$params->name=$inputs['name'];
+		}
 
-		// $view = \View::make('usuarios.index');
-		// return $view;
 		try {
-			$usuarios = $this->userService->getDataList('', $paginator);
+
+			$usuarios = $this->userService->getDataList($params, $paginator);
+
 		} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
 			\Log::error($this->clasName . $method);
 			\Log::error($ex);
@@ -45,7 +51,10 @@ class UsuariosController extends Controller
 		return view(
 			'usuarios.index',
 			[
-				'name' => $usuarios
+				'rows' => $usuarios->data,
+				'page' => $usuarios->currentPage,
+				'totalRows' => $usuarios->totalRows,
+				'totalPages' => $usuarios->totalPages
 			]
 		);
 	}

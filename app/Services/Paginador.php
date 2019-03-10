@@ -23,5 +23,16 @@ class Paginador
       return $page;
     });
   }
+
+  public function getRowsPorPagina () 
+  {
+    return $this->rowsPorPagina;
+  }
+
+  public function getCurrentPage()
+  {
+    return $this->page;
+  }
+
 }
 

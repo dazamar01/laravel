@@ -49,6 +49,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('home', 'HomeController@index')->name('home');
 
 // Usuarios
-Route::get('/usuarios',
+Route::get('/usuarios/{page?}{name?}',
     ['uses' => 'UsuariosController@index']
 );
