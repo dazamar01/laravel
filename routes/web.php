@@ -16,36 +16,15 @@
 // });
 
 
-// Route::get('/', function () {
-//     return view('master');
-// });
-
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-/*
-Route::get('/',
-    ['uses' => 'HomeController@getIndex']
-);
-
-Route::get('/roles',
-    ['uses' => 'RolController@getIndex']
-);
-*/
-
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
-
 // Login
 Route::get('/', 'Auth\LoginController@showLoginForm'); //->middleware('guest');
 Route::get('login', function () {
     return redirect('/');
 });
 Route::post('login', 'Auth\LoginController@login')->name('login');
+
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('logout2', 'Auth\LoginController@logout')->name('logout2');
 Route::get('home', 'HomeController@index')->name('home');
 
 // Usuarios

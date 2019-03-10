@@ -33,36 +33,51 @@ class UsuariosController extends Controller
 		if ( isset($inputs['name']) ){
 			$params->name=$inputs['name'];
 		}
-
-		try {
+		
+		try 
+		{
 
 			$usuarios = $this->userService->getDataList($params, $paginator);
 
-		} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
+			// info($usuarios->data);
+			
+			return view(
+				'usuarios.index',
+				[
+					'rows' => $usuarios->data,
+					'page' => $usuarios->currentPage,
+					'totalRows' => $usuarios->totalRows,
+					'totalPages' => $usuarios->totalPages
+					]
+				);
+
+		} 
+		catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) 
+		{
 			\Log::error($this->clasName . $method);
 			\Log::error($ex);
 			$usuarios = null;
-		} catch (\Exception $ex) {
+		} 
+		catch (\Exception $ex) 
+		{
 			\Log::error($this->clasName . $method);
 			\Log::error($ex);
 			$usuarios = null;
 		}
 
-		return view(
+		if ($usuarios == null)
+		{
+			return view(
 			'usuarios.index',
 			[
-				'rows' => $usuarios->data,
-				'page' => $usuarios->currentPage,
-				'totalRows' => $usuarios->totalRows,
-				'totalPages' => $usuarios->totalPages
-			]
-		);
+				'rows' => null,
+				'page' => null,
+				'totalRows' => null,
+				'totalPages' => null
+				]
+			);
+		}
+		
+
 	}
 }
-
-/*
-\Session::flash('info','Alert info');
-\Session::flash('success','Alert success');
-\Session::flash('warning','Alert warning');
-\Session::flash('danger','Alert danger');
-*/

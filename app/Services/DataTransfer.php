@@ -22,7 +22,8 @@ class DataTransfer
 
     if ($totalRows > 0) {
 
-      $this->data = json_encode($data);
+      // $this->data = json_encode($data);
+      $this->data = $data;
 
       $pagina = new Paginador();
       $this->totalPages = intval($totalRows / $pagina->getRowsPorPagina());

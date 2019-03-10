@@ -12,7 +12,9 @@
   <base href="{{ URL::asset('/') }}">
   <link rel="stylesheet" href="{{ url('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{ url('css/ytproject-style.css')}}">
-
+  
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.css">
+  
   <script src="{{url('js/jquery-3.3.1.min.js')}}"></script>
 
   
@@ -55,7 +57,7 @@
                 <a class="dropdown-item" href="#">Perfil</a>
                 <a class="dropdown-item" href="#">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
+                <a class="dropdown-item" href="{{ route('logout2') }}">Salir</a>
               </div>
             </li>
           </ul>
@@ -97,11 +99,14 @@
   <script src="{{url('js/bootstrap.min.js')}}"></script>
   <script src="{{url('js/generales.js')}}"></script>
 
+  <script src="https://unpkg.com/bootstrap-table@1.14.1/dist/bootstrap-table.min.js"></script>
+
   <script>
     $( document ).ready(function() {
       $(".auto-hide").fadeTo(1800, 500).slideUp(500, function(){
           $(".auto-hide").slideUp(500);
       });
+      
 
     });
   </script>

@@ -32,9 +32,8 @@ class UserService
     */
 
     $method = "getData";
-    $logParams = " Params: -> [ ".$params->name." ]";
-
-    // $data = new \stdClass();
+    $logParams = " Params: -> [  ]";
+    
     $data = null;
 
     try {
