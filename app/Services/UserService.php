@@ -32,7 +32,7 @@ class UserService
     */
 
     $method = "getData";
-    $errorContext = " Context: -> [  ]";
+    $logParams = " Params: -> [ ".$params->name." ]";
 
     // $data = new \stdClass();
     $data = null;
@@ -57,7 +57,7 @@ class UserService
         // total
 
       if (!$rawData) {
-        throw new ModelNotFoundException("Data not found | " . $this->clasName . $method . "\n" . $errorContext);
+        throw new ModelNotFoundException("Data not found | " . $this->clasName . $method . "\n" . $logParams);
       }
 
       $data = new Transfer();
@@ -68,7 +68,7 @@ class UserService
       // throw $ex;
       $data = null;
     } catch (Exception $ex) {
-      \Log::error("Exception | " . $this->clasName . $method . $errorContext);
+      \Log::error("Exception | " . $this->clasName . $method . $logParams);
       throw $ex;
     }
 
