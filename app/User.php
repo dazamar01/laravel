@@ -13,6 +13,9 @@ class User extends Authenticatable
     protected $table = 'adm_usuarios';
     protected $fillable = array('name', 'password', 'email');
 
+    protected $maps = [
+        'usuario_creacion_id' => 'creadoPor', 'fecha_creacion' => 'fechaCreacion'];
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
@@ -27,8 +30,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 'session_id', 'email_verified_at'
     ];
+
 
     /**
      * The attributes that should be cast to native types.
