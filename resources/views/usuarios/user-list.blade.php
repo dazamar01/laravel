@@ -1,22 +1,30 @@
-LISTA
 
-{{$rows}}
-{{-- 
-<table id="table_id" class="display table table-striped ">
+
+<table data-toggle="table">
     <thead>
         <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
+          <th>Id</th>
+          <th>Usuario</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
+        @foreach ($rows as $user)
+
+          <tr>
+              <td>{{$user['id']}}</td>
+              <td>{{$user['email']}}</td>
+          </tr>
+          
+        @endforeach
+
     </tbody>
-</table> --}}
+</table>
+
+
+<script>
+    $( document ).ready(function() {
+      
+
+      
+    });
+  </script>

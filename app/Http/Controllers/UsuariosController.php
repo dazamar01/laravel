@@ -48,6 +48,9 @@ class UsuariosController extends Controller
 			$usuarios = null;
 		}
 
+		info('usuarios->data');
+		info($usuarios->data);
+
 		if ($usuarios == null )
 		{
 			return view(
