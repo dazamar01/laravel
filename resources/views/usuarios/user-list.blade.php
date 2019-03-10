@@ -8,6 +8,8 @@
         </tr>
     </thead>
     <tbody>
+      @if($rows !== null)
+
         @foreach ($rows as $user)
 
           <tr>
@@ -16,6 +18,8 @@
           </tr>
           
         @endforeach
+        @endif
+        
 
     </tbody>
 </table>

@@ -33,39 +33,14 @@ class UsuariosController extends Controller
 		if ( isset($inputs['name']) ){
 			$params->name=$inputs['name'];
 		}
-
-		try {
+		
+		try 
+		{
 
 			$usuarios = $this->userService->getDataList($params, $paginator);
 
-		} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
-			\Log::error($this->clasName . $method);
-			\Log::error($ex);
-			$usuarios = null;
-		} catch (\Exception $ex) {
-			\Log::error($this->clasName . $method);
-			\Log::error($ex);
-			$usuarios = null;
-		}
-
-		info('usuarios->data');
-		info($usuarios->data);
-
-		if ($usuarios == null )
-		{
-			return view(
-				'usuarios.index',
-				[
-					'rows' => null,
-					'page' => null,
-					'totalRows' => null,
-					'totalPages' => null
-					]
-				);
+			// info($usuarios->data);
 			
-		}
-		else
-		{
 			return view(
 				'usuarios.index',
 				[
@@ -75,13 +50,34 @@ class UsuariosController extends Controller
 					'totalPages' => $usuarios->totalPages
 					]
 				);
+
+		} 
+		catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) 
+		{
+			\Log::error($this->clasName . $method);
+			\Log::error($ex);
+			$usuarios = null;
+		} 
+		catch (\Exception $ex) 
+		{
+			\Log::error($this->clasName . $method);
+			\Log::error($ex);
+			$usuarios = null;
 		}
+
+		if ($usuarios == null)
+		{
+			return view(
+			'usuarios.index',
+			[
+				'rows' => null,
+				'page' => null,
+				'totalRows' => null,
+				'totalPages' => null
+				]
+			);
+		}
+		
+
 	}
 }
-
-/*
-\Session::flash('info','Alert info');
-\Session::flash('success','Alert success');
-\Session::flash('warning','Alert warning');
-\Session::flash('danger','Alert danger');
-*/

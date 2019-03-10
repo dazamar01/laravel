@@ -57,7 +57,7 @@
                 <a class="dropdown-item" href="#">Perfil</a>
                 <a class="dropdown-item" href="#">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
+                <a class="dropdown-item" href="{{ route('logout2') }}">Salir</a>
               </div>
             </li>
           </ul>
@@ -106,13 +106,7 @@
       $(".auto-hide").fadeTo(1800, 500).slideUp(500, function(){
           $(".auto-hide").slideUp(500);
       });
-      /*
-      $('.tbl-data').DataTable({
-        paging: false,
-        scrollY: 400,
-        searching: false,
-      });
-      */
+      
 
     });
   </script>
