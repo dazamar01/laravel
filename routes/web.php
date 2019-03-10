@@ -16,28 +16,6 @@
 // });
 
 
-// Route::get('/', function () {
-//     return view('master');
-// });
-
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-/*
-Route::get('/',
-    ['uses' => 'HomeController@getIndex']
-);
-
-Route::get('/roles',
-    ['uses' => 'RolController@getIndex']
-);
-*/
-
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
-
 // Login
 Route::get('/', 'Auth\LoginController@showLoginForm'); //->middleware('guest');
 Route::get('login', function () {

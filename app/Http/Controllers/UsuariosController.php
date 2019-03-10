@@ -48,15 +48,31 @@ class UsuariosController extends Controller
 			$usuarios = null;
 		}
 
-		return view(
-			'usuarios.index',
-			[
-				'rows' => $usuarios->data,
-				'page' => $usuarios->currentPage,
-				'totalRows' => $usuarios->totalRows,
-				'totalPages' => $usuarios->totalPages
-			]
-		);
+		if ($usuarios == null )
+		{
+			return view(
+				'usuarios.index',
+				[
+					'rows' => null,
+					'page' => null,
+					'totalRows' => null,
+					'totalPages' => null
+					]
+				);
+			
+		}
+		else
+		{
+			return view(
+				'usuarios.index',
+				[
+					'rows' => $usuarios->data,
+					'page' => $usuarios->currentPage,
+					'totalRows' => $usuarios->totalRows,
+					'totalPages' => $usuarios->totalPages
+					]
+				);
+		}
 	}
 }
 
