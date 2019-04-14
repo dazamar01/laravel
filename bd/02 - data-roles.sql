@@ -16,14 +16,16 @@ REPLACE INTO `adm_usuarios` VALUES
   (1,'sistema','$2a$10$eL28kgjqiPVZ3yi8h.vTfOB42Re8OtrYr52fGDV6ucv2QMnMjCktu',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
   (2,'admin','$2a$10$o5vg4AGOAqpQg.d3YMcpj.UZy7fIVNFX0FyOPnMi/bMKkK7t5XYuy',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
   (3,'usuario','$2a$10$BMQ2A94K3rWc0MzZMmvPN.xKB2a3XjTM1Lh66SfwdehZZVDhZzfei',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-  (4,'lectura','$2a$10$BMQ2A94K3rWc0MzZMmvPN.xKB2a3XjTM1Lh66SfwdehZZVDhZzfei',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+  (4,'lectura','$2a$10$BMQ2A94K3rWc0MzZMmvPN.xKB2a3XjTM1Lh66SfwdehZZVDhZzfei',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+  (5,'Daniel','$2y$10$Z0pJjti5yVFaS2i1FaG4sOzTgI5Qnobk/KpQDODsYM5WIqpB8nWjW',NULL,'dazamar01@hotmail.com',NULL,NULL,NULL,NULL,NULL);  -- pwd: test
 
 INSERT INTO adm_roles_usuario
 (`usuario_id`, `rol`,`usuario_creacion_id`, `fecha_creacion`, `usuario_modificacion_id`, `fecha_modificacion`, `activo`)
 VALUES 
   (2,'ADMINISTRADOR',1,current_timestamp,1,current_timestamp,1),
   (3,'USUARIO',1,current_timestamp,1,current_timestamp,1),
-  (4,'LECTURA',1,current_timestamp,1,current_timestamp,1)
+  (4,'LECTURA',1,current_timestamp,1,current_timestamp,1),
+  (5,'USUARIO',1,current_timestamp,1,current_timestamp,1)
   ;
 
 

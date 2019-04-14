@@ -35,16 +35,16 @@ return [
 
         'mysql' => array(
             'read' => array(
-                'host' => '127.0.0.1',
+                'host' => '',
             ),
             'write' => array(
-                'host' => '127.0.0.1'
+                'host' => ''
             ),
             'driver'    => 'mysql',
-            'port'      => '8889',
+            'port'      => '3306',
             'database'  => 'test_laravel',
-            'username'  => 'test',
-            'password'  => 'test',
+            'username'  => '',
+            'password'  => '',
             'charset'   => 'utf8',
             'collation' => 'utf8_spanish_ci',
         ),

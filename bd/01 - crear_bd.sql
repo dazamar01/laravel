@@ -19,14 +19,14 @@ CREATE TABLE `adm_usuarios` (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'nombre del usuario unico',
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL COMMENT 'Contraseña',
   `session_id` varchar(70) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `correo_electronico` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `usuario_creacion_id` int(11) DEFAULT NULL COMMENT 'Referencia a usuario.id',
   `fecha_creacion` bigint(20) DEFAULT NULL COMMENT 'new Date().toISOString();',
   `usuario_modificacion_id` int(11) DEFAULT NULL COMMENT 'Referencia a usuario.id',
   `fecha_modificacion` bigint(20) DEFAULT NULL,
   `activo` tinyint(4) DEFAULT NULL COMMENT '1 activo, 0 inactivo',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_email` (`correo_electronico`),
+  UNIQUE KEY `uk_email` (`email`),
   UNIQUE KEY `uk_usuario` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 

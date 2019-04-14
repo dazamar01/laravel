@@ -19,3 +19,18 @@ Go inside the project and start the project with artisan serve
   cd laravel/
 
   php artisan serve
+
+
+
+## Regarding to init a new project for the very first time
+
+  
+  git init
+  
+  git add -A
+  
+  git commit -m "Versión inicial del proyecto"
+  
+  git remote add origin https://bitbucket.org/dazamar01/laravel/src/master/
+  
+  git push -f
